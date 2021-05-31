@@ -1,4 +1,35 @@
-<a class="weatherwidget-io" href="https://forecast7.com/en/23d13113d26/guangzhou/" data-label_1="GUANGZHOU" data-label_2="WEATHER" data-theme="original" >GUANGZHOU WEATHER</a>
+<a class="test" href="http://www.nemcaac.cn/dbinfo/app/common/airrpt/query?oneCccc=ZGGG&type=SA&type=SP&type=FC&type=FT&hour=4">metar</a>
 <script>
-!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
+var weborg = "http://www.nemcaac.cn/dbinfo/app/common/airrpt/query?oneCccc=ZGGG&type=SA&type=SP&type=FC&type=FT&hour=4";
+var search;
+var start;
+var end;
+var metar = parsing(weborg);
+
+function parsing(str)
+{
+ var rtr="";
+ var i =0;
+ search1 = "METAR";
+ search2 = "SPECI";
+ 
+ start = str.indexOf(search1);
+  if(start ==-1 || (start>str.indexOf(search2) && str.indexOf(search2)>-1)){
+   start=str.indexOf(search2);
+  }
+  str = str.substring(start-5, str.length);
+  
+ while(str.indexOf(search1)+str.indexOf(search2) > -2 && i<4)
+   {
+start = str.indexOf(search1);
+  if(start == -1 || (start>str.indexOf(search2) && str.indexOf(search2)>-1)){
+   start=str.indexOf(search2);
+  }
+  end = str.indexOf("</li>");
+  rtr = rtr + str.substring(start,end) + "\n";
+  str = str.substring(end+1, str.length);    
+i++;  
+ }
+ return rtr;
+}
 </script>
