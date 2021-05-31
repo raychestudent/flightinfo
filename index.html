@@ -1,10 +1,11 @@
-<a class="test" href="http://www.nemcaac.cn/dbinfo/app/common/airrpt/query?oneCccc=ZGGG&type=SA&type=SP&type=FC&type=FT&hour=4">metar</a>
+<a class="test" href="http://www.nemcaac.cn/dbinfo/app/common/airrpt/query?oneCccc=ZGGG&type=SA&type=SP&type=FC&type=FT&hour=4">mmm</a>
 <script>
 var weborg = "http://www.nemcaac.cn/dbinfo/app/common/airrpt/query?oneCccc=ZGGG&type=SA&type=SP&type=FC&type=FT&hour=4";
 var search;
 var start;
 var end;
 var metar = parsing(weborg);
+document.getElementById("test").innerHTML = metar;
 
 function parsing(str)
 {
